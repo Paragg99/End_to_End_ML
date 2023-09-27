@@ -4,6 +4,7 @@ from src.MLProject.exception import CustomException
 from src.MLProject.components.data_ingestion import DataIngestion
 from src.MLProject.components.data_ingestion import DataIngestionConfig
 from src.MLProject.components.data_transformation import DataTransformationConfig,DataTransformation
+from src.MLProject.components.model_trainer import ModelTrainerConfig,ModelTrainer
 
 
 
@@ -20,7 +21,11 @@ if __name__ == "__main__":
 
         #data_tranformation_config = DataTransformationConfig()
         data_tranformation = DataTransformation()
-        data_tranformation.initiate_data_transformation(train_data_path,test_data_path)
+        train_arr,test_arr,_= data_tranformation.initiate_data_transformation(train_data_path,test_data_path)
+
+        ## Model trainer code
+        model_trainer = ModelTrainer()
+        print(model_trainer.initiate_model_trainer(train_arr,test_arr))
 
 
     except Exception as e:
